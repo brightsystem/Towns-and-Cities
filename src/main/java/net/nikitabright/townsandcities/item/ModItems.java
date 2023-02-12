@@ -12,21 +12,13 @@ import net.nikitabright.townsandcities.TownsandCities;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, TownsandCities.MODID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, TownsandCities.MOD_ID);
 
     public static final RegistryObject<Item> PIPE = ITEMS.register("pipe",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GATE_PIPE = ITEMS.register("gate_pipe",
             () -> new Item(new Item.Properties()));
-
-    @SubscribeEvent
-    public void buildContents(CreativeModeTabEvent.BuildContents event) {
-        if (event.getTab() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            event.accept(PIPE);
-            event.accept(GATE_PIPE);
-        }
-    }
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
